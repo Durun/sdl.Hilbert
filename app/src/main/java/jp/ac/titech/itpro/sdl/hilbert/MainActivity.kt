@@ -10,6 +10,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        savedInstanceState?.let {
+            order = it.getInt("order")
+        }
+
         dec_button.setOnClickListener(View.OnClickListener {
             assertTrue(order > 1, "A room to decrement order should exist")
             order--
@@ -20,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             order++
             display()
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("order", order)
     }
 
     override fun onResume() {
