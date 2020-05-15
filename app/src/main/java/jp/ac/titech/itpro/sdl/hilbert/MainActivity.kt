@@ -1,7 +1,6 @@
 package jp.ac.titech.itpro.sdl.hilbert
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,16 +14,16 @@ class MainActivity : AppCompatActivity() {
             order = it.getInt("order")
         }
 
-        dec_button.setOnClickListener(View.OnClickListener {
+        dec_button.setOnClickListener {
             assertTrue(order > 1, "A room to decrement order should exist")
             order--
             display()
-        })
-        inc_button.setOnClickListener(View.OnClickListener {
+        }
+        inc_button.setOnClickListener {
             assertTrue(order < MAX_ORDER, "A room to increment order should exist")
             order++
             display()
-        })
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
