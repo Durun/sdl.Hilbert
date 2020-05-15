@@ -14,7 +14,6 @@ class HilbertView @JvmOverloads constructor(context: Context?, attrs: AttributeS
     private val paint = Paint()
     private lateinit var bufferBitmap: Bitmap
     private lateinit var bufferCanvas: Canvas
-    private var order = 1
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
@@ -28,14 +27,13 @@ class HilbertView @JvmOverloads constructor(context: Context?, attrs: AttributeS
     }
 
     fun setOrder(n: Int) {
-        order = n
         post {
-            bufferCanvas.drawHilbert()
+            bufferCanvas.drawHilbert(n)
             invalidate()
         }
     }
 
-    private fun Canvas.drawHilbert() {
+    private fun Canvas.drawHilbert(order: Int) {
         val w = width
         val h = height
         paint.color = Color.DKGRAY
